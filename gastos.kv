@@ -1,0 +1,38 @@
+<FinanceManager>:
+    orientation: "vertical"
+    padding: 20
+    spacing: 10
+
+    TextInput:
+        id: valor_input
+        hint_text: "Valor (R$)"
+        input_filter: "float"
+
+    TextInput:
+        id: descricao_input
+        hint_text: "Descrição"
+
+    BoxLayout:
+        size_hint_y: None
+        height: "40dp"
+        spacing: 10
+
+        Button:
+            text: "Adicionar Entrada"
+            on_press: root.adicionar_entrada(valor_input.text, descricao_input.text)
+
+        Button:
+            text: "Adicionar Gasto"
+            on_press: root.adicionar_gasto(valor_input.text, descricao_input.text)
+
+    Button:
+        text: "Gerar Relatório"
+        size_hint_y: None
+        height: "40dp"
+        on_press: root.gerar_relatorio()
+
+    Label:
+        text: root.relatorio_texto
+        halign: "left"
+        valign: "top"
+        text_size: self.width, None
