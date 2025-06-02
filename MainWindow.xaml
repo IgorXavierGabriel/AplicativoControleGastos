@@ -1,0 +1,55 @@
+<Window x:Class="MeuGerenciadorFinanceiroNovo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MeuGerenciadorFinanceiroNovo"  
+        mc:Ignorable="d"
+        Title="Gerenciador Financeiro" Height="600" Width="400"
+        Background="White">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Gerenciador Financeiro" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Row="0"/>
+
+        <StackPanel Orientation="Vertical" Margin="0,0,0,10" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBox x:Name="ValorInput" Width="150" Margin="0,0,10,0"
+                         ToolTip="Valor (ex: 100,00)" TextChanged="ValorInput_TextChanged"/>
+                <TextBox x:Name="DataInput" Width="150"
+                         ToolTip="Data (AAAA-MM-DD)" TextChanged="DataInput_TextChanged"/>
+            </StackPanel>
+            <TextBox x:Name="DescricaoInput" ToolTip="Descrição" Margin="0,0,0,5"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Row="2">
+            <Button Content="Limpar Campos" Click="ClearFields_Click" Width="100" Margin="0,0,10,0" Padding="5"/>
+            <Button Content="➕ Adicionar Entrada" Click="AddEntry_Click" Width="150" Margin="0,0,10,0" Padding="5"/>
+            <Button Content="➖ Adicionar Gasto" Click="AddExpense_Click" Width="150" Padding="5"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Grid.Row="3">
+            <TextBox x:Name="MesInput" Width="100" Margin="0,0,10,0" ToolTip="Mês (MM)"/>
+            <TextBox x:Name="AnoInput" Width="100" Margin="0,0,10,0" ToolTip="Ano (AAAA)"/>
+            <Button Content="📄 Gerar Relatório" Click="GenerateReport_Click" Width="150" Padding="5"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="5" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10">
+            <TextBlock x:Name="RelatorioTexto" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left"
+                       Foreground="Black"/>
+        </ScrollViewer>
+
+        <TextBlock x:Name="Mensagem" Foreground="Red" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="6"/>
+    </Grid>
+</Window>
